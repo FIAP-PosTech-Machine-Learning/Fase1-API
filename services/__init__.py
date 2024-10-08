@@ -1,0 +1,5 @@
+from services.comercializacao_service import get_comercializacao_data, get_comercializacao_by_id
+from services.exportacao_service import get_exportacao_data, get_exportacao_by_id
+from services.importacao_service import get_importacao_data, get_importacao_by_id
+from services.processamento_service import get_processamento_data, get_processamento_by_id
+from services.producao_service import get_producao_data, get_producao_by_id

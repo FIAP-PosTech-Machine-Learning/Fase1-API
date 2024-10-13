@@ -15,19 +15,19 @@ def convert_to_produtos(df):
             dados.append(AnoValorSchema(ano=ano, valor=valor))
         produtos.append(ExportacaoSchema(id=id, pais=pais, dados=dados))
     return produtos
-    
-    
+
+
 async def get_exportacao_data():
     try:
         data = await get_csv_data('http://vitibrasil.cnpuv.embrapa.br/download/ExpVinho.csv')
         data.to_csv('src/ProcessaViniferas.csv', index=False, encoding='utf-8')
-        
+
         return convert_to_produtos(data)
     except:
         data = await get_csv_data('src/ExpVinho.csv')
         return convert_to_produtos(data)
-    
-    
+
+
 async def get_exportacao_by_id(id: int):
     data = await get_exportacao_data()
     for produto in data:

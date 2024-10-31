@@ -4,11 +4,11 @@ from fastapi import FastAPI
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.responses import RedirectResponse
 from fastapi.security import OAuth2PasswordBearer
-
-
+from db import models
+from db.database import engine
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="public/authentication")
-app = FastAPI()
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title='Tech Challenge 1',
@@ -23,9 +23,11 @@ app.add_middleware(
     ]
 )
 
+
 @app.get('/', include_in_schema=False)
 def redirect_to__docs():
     return RedirectResponse(url='/docs')
+
 
 # Dynamically load and mount routers from the 'routers' folder
 for file in os.listdir('routers'):

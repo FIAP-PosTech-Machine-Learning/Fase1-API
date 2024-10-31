@@ -10,9 +10,9 @@ async def fetch(url, method='GET', headers=None, json=None, body=None):
         elif json:
             async with session.request(method, url, headers=headers, json=json) as response:
                 return await response.json()
-        async with session.request(method, url, headers=headers,) as response:
+        async with session.request(method, url, headers=headers, ) as response:
             return await response.json()
-            
+
+
 async def get_csv_data(url: str):
     return pd.read_csv(url, sep=';')
-    

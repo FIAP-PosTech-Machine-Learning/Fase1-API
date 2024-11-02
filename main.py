@@ -7,7 +7,7 @@ from fastapi.security import OAuth2PasswordBearer
 from db import models
 from db.database import engine
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="public/authentication")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="authentication")
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(

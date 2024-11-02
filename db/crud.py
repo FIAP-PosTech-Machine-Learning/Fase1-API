@@ -1,8 +1,9 @@
 from sqlalchemy.orm import Session
 from db.models import Comercio, ComercioAno, ExpVinho, ExpVinhoAno, ImpVinhos, ImpVinhosAno, ProcessaViniferas, \
-    ProcessaViniferasAno, Producao, ProducaoAno
+    ProcessaViniferasAno, Producao, ProducaoAno, User
 from schemas import ComercializacaoSchema, ExportacaoSchema, ImportacaoSchema, ProcessamentoSchema, ProducaoSchema, \
-    AnoValorSchema
+    AnoValorSchema, TokenResponseSchema, UserSchema
+from services.authentication_service import get_password_hash
 
 
 def get_comercio(db: Session, comercio_id: int):
@@ -94,3 +95,13 @@ def create_producao(db: Session, producao: ProducaoSchema):
 
     db.commit()
     return db_producao
+
+def create_user(db: Session, data: UserSchema):
+    db_user = User(email=data.email, password=get_password_hash(data.password), is_active=True)
+    db.add(db_user)
+    db.commit()
+    db.refresh(db_user)
+    return db_user
+
+def get_user(db: Session, email: str):
+    return db.query(User).filter(User.email == email).first()

@@ -34,7 +34,7 @@ Antes de executar a aplicação, certifique-se de ter os seguintes itens instala
 
 ```bash
 git clone https://github.com/FIAP-PosTech-Machine-Learning/Fase1-API.git
-cd UY3
+cd Fase1-API
 ```
 
 #### **02. Configure o arquivo .env**

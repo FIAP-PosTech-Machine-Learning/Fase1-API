@@ -29,6 +29,7 @@ Before running the application, ensure you have the following installed:
 - Python 3.12+
 - pip (Python package installer)
 - FastAPI and related dependencies
+- Docker
 
 #### **01. Clone the repository**
 
@@ -42,7 +43,13 @@ cd Fase1-API
 SECRET_KEY=<your_secret_key>
 ```
 
-#### **03. Install Python dependencies**
+### **03. Setup the Database with Docker**
+Use the docker compose to deploy the database with Docker.
+```bash
+docker compose up -d
+```
+
+#### **04. Install Python dependencies**
 Make sure you have a virtual environment set up to avoid dependency conflicts. Then install the required dependencies from requirements.txt.
 ```bash
 python -m venv venv        # Create and activate the virtual environment
@@ -55,7 +62,7 @@ venv\Scripts\activate      # For Windows
 pip install -r requirements.txt     # Install dependencies
 ```
 
-#### **04. Run the FastAPI application**
+#### **05. Run the FastAPI application**
 Once the environment are set up, you can start the FastAPI server:
 ```bash
 fastapi dev main.py # for development environment
@@ -65,7 +72,7 @@ or
 fastapi run main.py # for production environment
 ```
 
-#### **05. Access the API**
+#### **06. Access the API**
 
 - Open your browser and navigate to http://127.0.0.1:8000/ to access the API.
 
@@ -73,7 +80,7 @@ FastAPI automatically generates interactive API documentation, which can be acce
 - Swagger UI: http://127.0.0.1:8000
 - ReDoc: http://127.0.0.1:8000/redoc
 
-#### **06. Testing the Application**
+#### **07. Testing the Application**
 You can use the Swagger UI to test the API endpoints or use tools like curl, Postman, or httpie to send requests to the API.
 
 ## Common Issues

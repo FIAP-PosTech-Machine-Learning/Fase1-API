@@ -42,7 +42,13 @@ cd Fase1-API
 SECRET_KEY=<your_secret_key>
 ```
 
-#### **03. Instale as dependências do Python**
+### **03. Crie o banco de dados através do Docker**
+Use o Docker para implementar o banco através do comando do docker compose:
+```bash
+docker compose up -d
+```
+
+#### **04. Instale as dependências do Python**
 Certifique-se de ter um ambiente virtual configurado para evitar conflitos de dependências. Em seguida, instale as dependências listadas em requirements.txt.
 ```bash
 python -m venv venv        # Crie e ative o ambiente virtual
@@ -55,7 +61,7 @@ venv\Scripts\activate      # Para Windows
 pip install -r requirements.txt     # Instale as dependências
 ```
 
-#### **04. Execute a aplicação FastAPI**
+#### **05. Execute a aplicação FastAPI**
 Após configurar o ambiente, você pode iniciar o servidor FastAPI:
 ```bash
 fastapi dev main.py # para ambiente de desenvolvimento
@@ -65,7 +71,7 @@ ou
 fastapi run main.py # para ambiente de produção
 ```
 
-#### **05. Acesse a API**
+#### **06. Acesse a API**
 
 - Abra seu navegador e navegue para http://127.0.0.1:8000/ para acessar a API.
 
@@ -73,7 +79,7 @@ O FastAPI gera automaticamente uma documentação interativa da API, que pode se
 - Swagger UI: http://127.0.0.1:8000
 - ReDoc: http://127.0.0.1:8000/redoc
 
-#### **06. Testando a Aplicação**
+#### **07. Testando a Aplicação**
 Você pode usar o Swagger UI para testar os endpoints da API ou usar ferramentas como curl, Postman ou httpie para enviar requisições à API.
 
 ## Problemas Comuns

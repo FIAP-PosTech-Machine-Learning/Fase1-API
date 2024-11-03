@@ -4,3 +4,4 @@ from schemas.exportacao_schema import ExportacaoSchema
 from schemas.importacao_schema import ImportacaoSchema
 from schemas.processamento_schema import ProcessamentoSchema
 from schemas.producao_schema import ProducaoSchema
+from schemas.authentication_schema import AuthenticationSchema, UserSchema

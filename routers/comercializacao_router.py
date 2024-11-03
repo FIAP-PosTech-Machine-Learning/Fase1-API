@@ -4,7 +4,6 @@ from schemas import ComercializacaoSchema
 from typing import List
 import services
 
-
 api_token = HTTPBearer()
 
 router = APIRouter(
@@ -12,9 +11,11 @@ router = APIRouter(
     tags=["Comercialização"],
 )
 
+
 @router.get("/", response_model=List[ComercializacaoSchema], status_code=200)
 async def get_comercializacao():
     return await services.get_comercializacao_data()
+
 
 @router.get("/{id}", response_model=ComercializacaoSchema, status_code=200)
 async def get_comercializacao_by_id(id: int):

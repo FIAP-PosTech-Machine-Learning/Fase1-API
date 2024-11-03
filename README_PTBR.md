@@ -34,7 +34,7 @@ Antes de executar a aplicação, certifique-se de ter os seguintes itens instala
 
 ```bash
 git clone https://github.com/FIAP-PosTech-Machine-Learning/Fase1-API.git
-cd UY3
+cd Fase1-API
 ```
 
 #### **02. Configure o arquivo .env**
@@ -88,6 +88,12 @@ Você pode usar o Swagger UI para testar os endpoints da API ou usar ferramentas
       <img src="https://avatars.githubusercontent.com/u/71346377?v=4" width="160px" alt="Foto do Alexandre"/><br>
       <sub>
         <a href="https://www.github.com/alexandre-tvrs">@Alexandre Tavares</a>
+      </sub>
+    </td>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/160500127?v=4" width="160px" alt="Foto do Paulo"/><br>
+      <sub>
+        <a href="https://github.com/PauloMukai">@Paulo Mukai</a>
       </sub>
     </td>
   </tr>

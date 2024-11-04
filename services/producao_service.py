@@ -18,7 +18,7 @@ def convert_to_produtos(df):
             except ValueError:
                 valor = None
             dados.append(AnoValorSchema(ano=ano, valor=valor))
-        produtos.append(ProducaoSchema(index=index, controle=controle, nome=nome, dados=dados))
+        produtos.append(ProducaoSchema(id=index, controle=controle, nome=nome, dados=dados))
     return produtos
 
 

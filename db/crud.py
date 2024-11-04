@@ -1,8 +1,7 @@
 from sqlalchemy.orm import Session
 from db.models import Comercio, ComercioAno, ExpVinho, ExpVinhoAno, ImpVinhos, ImpVinhosAno, ProcessaViniferas, \
     ProcessaViniferasAno, Producao, ProducaoAno, User
-from schemas import ComercializacaoSchema, ExportacaoSchema, ImportacaoSchema, ProcessamentoSchema, ProducaoSchema, \
-    AnoValorSchema, TokenResponseSchema, UserSchema
+from schemas import ComercializacaoSchema, ExportacaoSchema, ImportacaoSchema, ProcessamentoSchema, ProducaoSchema, UserSchema
 from services.authentication_service import get_password_hash
 
 

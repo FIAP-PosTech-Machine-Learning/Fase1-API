@@ -15,7 +15,7 @@ def convert_to_produtos(df):
         for ano in anos:
             valor = row[ano]
             dados.append(AnoValorSchema(ano=ano, valor=valor))
-        produtos.append(ComercializacaoSchema(index=index, controle=controle, nome=nome, dados=dados))
+        produtos.append(ComercializacaoSchema(id=index, controle=controle, nome=nome, dados=dados))
     return produtos
 
 

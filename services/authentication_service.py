@@ -5,7 +5,7 @@ from jwt.exceptions import InvalidTokenError
 from passlib.context import CryptContext
 from datetime import datetime, timedelta, timezone
 from schemas import TokenResponseSchema
-from db.crud import get_user
+
 
 SECRET_KEY = os.getenv("SECRET_KEY", default="your-secret-key")
 ALGORITHM = "HS256"
@@ -45,6 +45,7 @@ def get_password_hash(password):
     return pwd_context.hash(password)
 
 async def validate_user(data, ip):
+    from db.crud import get_user
     # Convert the email to lowercase when querying the repository
     user = await get_user(email=data.email.lower())
 

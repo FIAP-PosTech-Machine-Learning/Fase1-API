@@ -2,7 +2,6 @@ from utils import get_csv_data
 from schemas import ProcessamentoSchema, AnoValorSchema
 from db.database import engine
 from sqlalchemy.orm import Session
-from db.crud import create_processamento
 
 
 def convert_to_produtos(df):
@@ -31,6 +30,7 @@ async def get_processamento_data():
 
 
 async def save_processamento_data():
+    from db.crud import create_processamento
     async with Session(engine) as session:
         produtos = await get_processamento_data()
         for produto in produtos:

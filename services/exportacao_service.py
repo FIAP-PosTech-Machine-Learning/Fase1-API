@@ -2,7 +2,6 @@ from utils import get_csv_data
 from schemas import ExportacaoSchema, AnoValorSchema
 from db.database import engine
 from sqlalchemy.orm import Session
-from db.crud import create_exp_vinho
 
 
 def convert_to_produtos(df):
@@ -30,6 +29,7 @@ async def get_exportacao_data():
 
 
 async def save_exportacao_data():
+    from db.crud import create_exp_vinho
     async with Session(engine) as session:
         produtos = await get_exportacao_data()
         for produto in produtos:

@@ -2,7 +2,6 @@ from utils import get_csv_data
 from schemas import ComercializacaoSchema, AnoValorSchema
 from db.database import engine
 from sqlalchemy.orm import Session
-from db.crud import create_comercio
 
 
 def convert_to_produtos(df):
@@ -31,6 +30,7 @@ async def get_comercializacao_data():
 
 
 async def save_comercializacao_data():
+    from db.crud import create_comercio
     async with Session(engine) as session:
         produtos = await get_comercializacao_data()
         for produto in produtos:

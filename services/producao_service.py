@@ -2,7 +2,6 @@ from utils import get_csv_data
 from schemas import ProducaoSchema, AnoValorSchema
 from db.database import engine
 from sqlalchemy.orm import Session
-from db.crud import create_producao
 
 
 def convert_to_produtos(df):
@@ -35,6 +34,7 @@ async def get_producao_data():
 
 async def save_producao_data():
     async with Session(engine) as session:
+        from db.crud import create_producao
         produtos = await get_producao_data()
         for produto in produtos:
             create_producao(session, produto)

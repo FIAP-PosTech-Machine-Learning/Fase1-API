@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import List
-from schemas import AnoValorSchema
+from schemas.commom_schema import AnoValorSchema
 
 
 class ProcessamentoSchema(BaseModel):

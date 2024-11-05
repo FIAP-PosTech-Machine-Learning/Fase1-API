@@ -18,7 +18,8 @@ def convert_to_produtos(df):
             except ValueError:
                 valor = None
             dados.append(AnoValorSchema(ano=ano, valor=valor))
-        produtos.append(ProducaoSchema(id=index, controle=controle, nome=nome, dados=dados))
+        produtos.append(ProducaoSchema(
+            id=index, controle=controle, nome=nome, dados=dados))
     return produtos
 
 
@@ -30,6 +31,14 @@ async def get_producao_data():
     except:
         data = await get_csv_data('src/Producao.csv')
         return convert_to_produtos(data)
+
+
+async def get_producao_by_id(id: int):
+    produtos = await get_producao_data()
+    for produto in produtos:
+        if produto.id == id:
+            return produto
+    return None
 
 
 async def save_producao_data():

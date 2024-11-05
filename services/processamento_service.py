@@ -15,7 +15,8 @@ def convert_to_produtos(df):
         for ano in anos:
             valor = row[ano] if isinstance(row[ano], int) else 0
             dados.append(AnoValorSchema(ano=ano, valor=valor))
-        produtos.append(ProcessamentoSchema(id=index, controle=controle, cultivar=cultivar, dados=dados))
+        produtos.append(ProcessamentoSchema(
+            id=index, controle=controle, cultivar=cultivar, dados=dados))
     return produtos
 
 
@@ -27,6 +28,14 @@ async def get_processamento_data():
     except:
         data = await get_csv_data('src/ProcessaViniferas.csv')
         return convert_to_produtos(data)
+
+
+async def get_processamento_by_id(id: int):
+    produtos = await get_processamento_data()
+    for produto in produtos:
+        if produto.id == id:
+            return produto
+    return None
 
 
 async def save_processamento_data():

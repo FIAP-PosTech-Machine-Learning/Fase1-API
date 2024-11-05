@@ -12,9 +12,11 @@ router = APIRouter(
     tags=["Processamento"],
 )
 
+
 @router.get("/", response_model=List[ProcessamentoSchema], status_code=200)
 async def get_processamento_data():
     return await services.get_processamento_data()
+
 
 @router.get("/{id}", response_model=ProcessamentoSchema, status_code=200)
 async def get_processamento_by_id(id: int):

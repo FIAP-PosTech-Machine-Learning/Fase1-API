@@ -25,7 +25,7 @@ from .crud import (
 )
 
 
-from .database import SessionLocal, engine, Base
+from .database import SessionLocal, engine, Base, get_db
 
 __all__ = [
     "Comercio",

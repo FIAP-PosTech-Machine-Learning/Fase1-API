@@ -12,9 +12,11 @@ router = APIRouter(
     tags=["Produção"],
 )
 
+
 @router.get("/", response_model=List[ProducaoSchema], status_code=200)
 async def get_producao_data():
     return await services.get_producao_data()
+
 
 @router.get("/{id}", response_model=ProducaoSchema, status_code=200)
 async def get_producao_by_id(id: int):

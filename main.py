@@ -16,6 +16,12 @@ app = FastAPI(
     version='0.1',
 )
 
+
+# @app.on_event("startup")
+# async def startup():
+#    await comercializacao_service.load_comercializacao_data()
+
+
 app.add_middleware(
     TrustedHostMiddleware, allowed_hosts=[
         'localhost',

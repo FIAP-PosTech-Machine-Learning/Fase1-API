@@ -1,6 +1,7 @@
 from pydantic import BaseModel
+from typing import Optional
 
 
 class AnoValorSchema(BaseModel):
     ano: int
-    valor: float
+    valor: Optional[float] = None

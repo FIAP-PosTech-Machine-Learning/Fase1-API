@@ -15,7 +15,8 @@ def convert_to_produtos(df):
         for ano in anos:
             valor = row[ano]
             dados.append(AnoValorSchema(ano=ano, valor=valor))
-        produtos.append(ComercializacaoSchema(id=index, controle=controle, nome=nome, dados=dados))
+        produtos.append(ComercializacaoSchema(
+            id=index, controle=controle, nome=nome, dados=dados))
     return produtos
 
 
@@ -29,9 +30,21 @@ async def get_comercializacao_data():
         return convert_to_produtos(data)
 
 
+async def get_comercializacao_by_id(id: int):
+    produtos = await get_comercializacao_data()
+    for produto in produtos:
+        if produto.id == id:
+            return produto
+    return None
+
+
 async def save_comercializacao_data():
     from db.crud import create_comercio
     async with Session(engine) as session:
         produtos = await get_comercializacao_data()
         for produto in produtos:
             create_comercio(session, produto)
+
+
+async def load_comercializacao_data():
+    pass  # implementar gravacao dos dados no banco de dados

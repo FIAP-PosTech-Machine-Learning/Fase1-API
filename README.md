@@ -110,5 +110,12 @@ You can use the Swagger UI to test the API endpoints or use tools like curl, Pos
         <a href="https://github.com/AnjosVanessa">@AnjosVanessa</a>
       </sub>
     </td>
+    </td>
+        <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/89281305?v=4" width="160px" alt="Foto da Vitor"/><br>
+      <sub>
+        <a href="https://github.com/vitorabreu29">@vitorabreu29</a>
+      </sub>
+    </td>
   </tr>
 </table>

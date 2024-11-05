@@ -44,7 +44,7 @@ def verify_password(plain_password, hashed_password):
 def get_password_hash(password):
     return pwd_context.hash(password)
 
-async def validate_user(data, ip):
+async def validate_user(data):
     from db.crud import get_user
     # Convert the email to lowercase when querying the repository
     user = await get_user(email=data.email.lower())
@@ -60,8 +60,5 @@ async def validate_user(data, ip):
     # Check if the password is valid (case-sensitive)
     if not verify_password(data.password, user.password):
         raise HTTPException(status_code=401, detail="Invalid credentials")
-
-    # Validate the IP address
-    # if user.ip_address == ip:
-    #     # Generate the JWT token
+    
     return create_access_token({"user_id": user.id})

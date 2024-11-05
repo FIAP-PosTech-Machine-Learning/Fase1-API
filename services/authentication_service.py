@@ -1,7 +1,7 @@
 import os
 from fastapi import HTTPException
 import jwt
-from jwt.exceptions import InvalidTokenError
+from jwt.exceptions import InvalidTokenError, ExpiredSignatureError
 from passlib.context import CryptContext
 from datetime import datetime, timedelta, timezone
 from schemas import TokenResponseSchema
@@ -32,10 +32,15 @@ def create_access_token(data: dict):
 # Function to validate the JWT
 def validate_access_token(token: str):
     try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        return payload
+        # Decodifica o token usando a chave secreta e algoritmo definidos
+        jwt.decode(token.credentials, SECRET_KEY, algorithms=[ALGORITHM])
+        return True
+    except ExpiredSignatureError:
+        # Token expirou
+        raise HTTPException(status_code=401, detail='Token expired')
     except InvalidTokenError:
-        return HTTPException(status_code=401, detail='Invalid token') 
+        # Outros erros de validação do token
+        raise HTTPException(status_code=401, detail='Invalid token')
 
 # Password hashing and verification functions
 def verify_password(plain_password, hashed_password):
@@ -46,8 +51,11 @@ def get_password_hash(password):
 
 async def validate_user(data):
     from db.crud import get_user
+    from db.database import get_db
+    
+    db = next(get_db())
     # Convert the email to lowercase when querying the repository
-    user = await get_user(email=data.email.lower())
+    user = await get_user(db, email=data.email.lower())
 
     # Check if the user was found
     if user is None:
